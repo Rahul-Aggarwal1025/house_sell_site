@@ -12,7 +12,9 @@ export default function Footer({ setCurrentPage }) {
   return (
     <footer>
       <div className="container">
-        <div className="footer-logo" style={{ letterSpacing: '0.15em', fontWeight: '600' }}>SUNRISE ESTATE</div>
+        <div className="footer-logo" style={{ letterSpacing: '0.15em', fontWeight: '600', color: 'var(--text-primary)', marginBottom: 'var(--space-4)' }}>
+          SUNRISE ESTATE
+        </div>
         
         {/* Simple Footer Links */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '15px 0', flexWrap: 'wrap' }}>

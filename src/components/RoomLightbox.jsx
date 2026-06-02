@@ -146,7 +146,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
             borderRadius: 'var(--radius-sm)',
             border: '1px solid rgba(255,255,255,0.1)',
             overflow: 'hidden',
-            backgroundColor: '#1a1714',
+            backgroundColor: '#1A1D20',
             animation: 'scaleIn 0.35s cubic-bezier(0.25, 1, 0.5, 1)',
             display: 'flex',
             flexDirection: 'column',
@@ -168,7 +168,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
           <div 
             style={{ 
               padding: '12px 20px', 
-              backgroundColor: 'rgba(42, 37, 33, 0.9)', 
+              backgroundColor: 'rgba(26, 32, 40, 0.9)', 
               color: '#FFF', 
               fontSize: '11px',
               textAlign: 'center',

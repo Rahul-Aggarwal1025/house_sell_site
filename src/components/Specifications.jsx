@@ -33,7 +33,7 @@ export default function Specifications() {
             className="form-card" 
             style={{ 
               flex: '1 1 380px', 
-              backgroundColor: '#2A2521', 
+              backgroundColor: '#1E252D', 
               borderColor: 'rgba(255,255,255,0.05)',
               padding: 'var(--space-8)',
               display: 'flex',

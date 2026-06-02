@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logoIcon from '../assets/logo_icon.png';
 
 export default function Navbar({ currentPage, setCurrentPage }) {
   const [scrolled, setScrolled] = useState(false);
@@ -49,8 +50,19 @@ export default function Navbar({ currentPage, setCurrentPage }) {
               e.preventDefault();
               handleNavClick('home');
             }}
+            style={{ display: 'flex', alignItems: 'center' }}
           >
-            SUNRISE<span>ESTATE</span>
+            <img 
+              src={logoIcon} 
+              alt="Sunrise Estate Logo" 
+              style={{ 
+                height: scrolled ? '56px' : '74px', 
+                width: 'auto',
+                transition: 'height 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
+                display: 'block',
+                mixBlendMode: 'multiply'
+              }} 
+            />
           </a>
 
           {/* Desktop Navigation Links (Hidden on mobile via CSS) */}

@@ -1,43 +1,43 @@
-/* Premium Warm Cream & Minimalist White Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+/* Premium Warm Cream & Minimalist White Design System - High Readability Version */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Harmonious Color Palette - Elegant Warm Luxury */
-  --bg-primary: #FAF9F6;      /* Off-white Alabaster */
-  --bg-secondary: #F7F4EB;    /* Delicate Warm Cream */
-  --bg-tertiary: #FFFFFF;     /* Pure White Card Fill */
+  /* Ultra-Premium Cool Slate & Crisp Pearl Design System - Maximum Contrast Readability */
+  --bg-primary: #F8F9FA;      /* Crisp cool Alabaster (Ultra-clean, zero screen glare) */
+  --bg-secondary: #EBF0F3;    /* Professional Soft Slate (Distinct, clean section separations, replaces old beige) */
+  --bg-tertiary: #FFFFFF;     /* Pure White Card Fill (Perfect contrast on slate/alabaster) */
   
-  --text-primary: #2A2521;    /* Rich Deep Charcoal */
-  --text-secondary: #5D5650;  /* Muted Warm Brown */
-  --text-muted: #8E857C;      /* Subtle Taupe */
+  --text-primary: #11151A;    /* Midnight Charcoal (Maximum WCAG AAA legibility contrast) */
+  --text-secondary: #2C353F;  /* Deep Slate (Rich, highly readable copy) */
+  --text-muted: #5E6975;      /* Slate Grey (Accessible secondary captions and markers) */
   
-  --accent-color: #C59B27;    /* Warm Bronze Gold */
-  --accent-hover: #A88420;
-  --accent-light: rgba(197, 155, 39, 0.08);
-  --accent-border: rgba(197, 155, 39, 0.25);
+  --accent-color: #A67D1E;    /* Royal Gold (Deep bronze-gold, pops legibly on light backgrounds) */
+  --accent-hover: #866415;
+  --accent-light: rgba(166, 125, 30, 0.08);
+  --accent-border: rgba(166, 125, 30, 0.25);
   
-  --border-color: rgba(42, 37, 33, 0.08);
-  --border-focus: rgba(197, 155, 39, 0.5);
+  --border-color: rgba(17, 21, 26, 0.14); /* Clean, high-visibility borders for all panels */
+  --border-focus: rgba(166, 125, 30, 0.5);
   
   --card-bg: #FFFFFF;
-  --shadow-sm: 0 4px 12px rgba(42, 37, 33, 0.04);
-  --shadow-md: 0 12px 32px rgba(42, 37, 33, 0.08);
-  --shadow-lg: 0 24px 64px rgba(42, 37, 33, 0.12);
+  --shadow-sm: 0 4px 12px rgba(17, 21, 26, 0.03);
+  --shadow-md: 0 12px 32px rgba(17, 21, 26, 0.06);
+  --shadow-lg: 0 24px 64px rgba(17, 21, 26, 0.10);
   
-  /* Typography */
-  --font-serif: 'Playfair Display', Georgia, serif;
+  /* Typography - Clean Sans & Geometric Display Combo for visual convenience */
+  --font-serif: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   
-  /* Font Sizes */
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-base: 1rem;
-  --fs-md: 1.125rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: 1.5rem;
-  --fs-2xl: 2rem;
-  --fs-3xl: 2.75rem;
-  --fs-4xl: 4.25rem;
+  /* Font Sizes - Scaled up for screen reading convenience */
+  --fs-xs: 0.8rem;
+  --fs-sm: 0.92rem;
+  --fs-base: 1.05rem;
+  --fs-md: 1.18rem;
+  --fs-lg: 1.35rem;
+  --fs-xl: 1.65rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3.15rem;
+  --fs-4xl: 4.60rem;
   
   /* Spacing Scale */
   --space-1: 0.25rem;
@@ -77,7 +77,7 @@ body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.7;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -180,7 +180,7 @@ header {
 }
 
 header.scrolled {
-  background-color: rgba(250, 249, 246, 0.85);
+  background-color: rgba(248, 249, 250, 0.85);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
@@ -325,7 +325,8 @@ header.scrolled .navbar {
 .form-group label {
   display: block;
   font-size: var(--fs-xs);
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
   margin-bottom: var(--space-2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -333,10 +334,10 @@ header.scrolled .navbar {
 
 .form-group input, .form-group select, .form-group textarea {
   width: 100%;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(24, 20, 17, 0.22);
   color: var(--text-primary);
-  padding: var(--space-3) var(--space-4);
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: var(--fs-sm);
@@ -346,7 +347,8 @@ header.scrolled .navbar {
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  background-color: var(--bg-tertiary);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 2px rgba(163, 121, 15, 0.1);
 }
 
 /* Animations Framework Placeholder */
@@ -602,7 +604,7 @@ footer {
   right: 0;
   width: 280px;
   height: 100vh;
-  background-color: rgba(250, 249, 246, 0.96);
+  background-color: rgba(248, 249, 250, 0.96);
   backdrop-filter: blur(15px);
   border-left: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
