@@ -1,0 +1,2 @@
+Paste lobby images here.
+Located inside src/assets/rooms/lobby/.

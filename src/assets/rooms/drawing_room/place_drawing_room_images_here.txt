@@ -1,0 +1,2 @@
+Paste drawing room images here.
+Located inside src/assets/rooms/drawing_room/.

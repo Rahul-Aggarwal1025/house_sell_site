@@ -1,0 +1,2 @@
+Paste bedroom 3 images here.
+Located inside src/assets/rooms/bedroom_3/.

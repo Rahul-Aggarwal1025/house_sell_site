@@ -1,0 +1,2 @@
+Paste toilet 1 images here.
+Located inside src/assets/rooms/toilet_1/.

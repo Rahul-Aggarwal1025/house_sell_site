@@ -1,0 +1,1 @@
+Pasted PNG/JPG visual assets inside this directory will automatically register on the website.

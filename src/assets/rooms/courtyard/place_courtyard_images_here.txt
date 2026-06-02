@@ -1,0 +1,2 @@
+Paste courtyard images here.
+Located inside src/assets/rooms/courtyard/.

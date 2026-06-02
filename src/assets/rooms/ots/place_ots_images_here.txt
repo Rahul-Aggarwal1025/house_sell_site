@@ -1,0 +1,2 @@
+Paste ots images here.
+Located inside src/assets/rooms/ots/.

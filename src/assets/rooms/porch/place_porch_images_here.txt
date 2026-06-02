@@ -1,0 +1,2 @@
+Paste porch / courtyard / ots images here.
+Located inside src/assets/rooms/porch/ or /courtyard/ or /ots/.

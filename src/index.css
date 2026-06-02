@@ -1,0 +1,694 @@
+/* Premium Warm Cream & Minimalist White Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Harmonious Color Palette - Elegant Warm Luxury */
+  --bg-primary: #FAF9F6;      /* Off-white Alabaster */
+  --bg-secondary: #F7F4EB;    /* Delicate Warm Cream */
+  --bg-tertiary: #FFFFFF;     /* Pure White Card Fill */
+  
+  --text-primary: #2A2521;    /* Rich Deep Charcoal */
+  --text-secondary: #5D5650;  /* Muted Warm Brown */
+  --text-muted: #8E857C;      /* Subtle Taupe */
+  
+  --accent-color: #C59B27;    /* Warm Bronze Gold */
+  --accent-hover: #A88420;
+  --accent-light: rgba(197, 155, 39, 0.08);
+  --accent-border: rgba(197, 155, 39, 0.25);
+  
+  --border-color: rgba(42, 37, 33, 0.08);
+  --border-focus: rgba(197, 155, 39, 0.5);
+  
+  --card-bg: #FFFFFF;
+  --shadow-sm: 0 4px 12px rgba(42, 37, 33, 0.04);
+  --shadow-md: 0 12px 32px rgba(42, 37, 33, 0.08);
+  --shadow-lg: 0 24px 64px rgba(42, 37, 33, 0.12);
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Font Sizes */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.75rem;
+  --fs-4xl: 4.25rem;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  
+  /* Borders */
+  --radius-sm: 2px;            /* Sleek, sharp minimalist luxury */
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  
+  /* Animations Framework */
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Resets & Core Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(var(--fs-2xl), 8vw, var(--fs-4xl)); }
+h2 { font-size: clamp(var(--fs-xl), 5vw, var(--fs-3xl)); position: relative; margin-bottom: var(--space-6); }
+h3 { font-size: var(--fs-xl); }
+p {
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  margin-bottom: var(--space-4);
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+/* Structure Layouts */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+section {
+  padding: var(--space-24) 0;
+}
+
+.section-white {
+  background-color: var(--bg-primary);
+}
+
+.section-cream {
+  background-color: var(--bg-secondary);
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.grid-2 { grid-template-columns: 1fr; }
+.grid-3 { grid-template-columns: 1fr; }
+
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-16) auto;
+}
+
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--accent-color);
+  margin: var(--space-4) auto 0 auto;
+}
+
+.section-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--fs-xs);
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+/* Header & Navigation */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: var(--transition-smooth);
+  border-bottom: 1px solid transparent;
+}
+
+header.scrolled {
+  background-color: rgba(250, 249, 246, 0.85);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+header.scrolled .navbar {
+  height: 75px;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.logo span {
+  color: var(--accent-color);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Call-to-Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Skeletons & Cards */
+.skeleton-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-8);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.skeleton-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Form Styling - Cream & White Theme */
+.form-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: var(--space-12);
+  border-radius: var(--radius-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-6);
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  transition: var(--transition-fast);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: var(--bg-tertiary);
+}
+
+/* Animations Framework Placeholder */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpIn 1s forwards cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes fadeUpIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-secondary);
+  padding: var(--space-16) 0 var(--space-8) 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+/* ==========================================================================
+   Interactive Map Premium Showcase Animations & Effects
+   ========================================================================== */
+
+/* Glowing Pulsate Effect for Active Rooms */
+.map-active-room {
+  animation: mapPulse 2s infinite alternate ease-in-out;
+  box-shadow: 0 0 15px rgba(197, 155, 39, 0.4), inset 0 0 15px rgba(197, 155, 39, 0.2);
+}
+
+@keyframes mapPulse {
+  0% {
+    background-color: rgba(197, 155, 39, 0.15);
+    border-color: rgba(197, 155, 39, 0.6);
+  }
+  100% {
+    background-color: rgba(197, 155, 39, 0.35);
+    border-color: rgba(197, 155, 39, 1.0);
+    box-shadow: 0 0 25px rgba(197, 155, 39, 0.65), inset 0 0 20px rgba(197, 155, 39, 0.35);
+  }
+}
+
+/* Hover scanning ripple line */
+.map-scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  animation: scanEffect 3s infinite linear;
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 12;
+}
+
+@keyframes scanEffect {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+/* Click Ripple Wave */
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(197, 155, 39, 0.6);
+  transform: scale(0);
+  animation: rippleAnimation 0.6s ease-out;
+  pointer-events: none;
+  z-index: 15;
+}
+
+@keyframes rippleAnimation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Floating Elegant Glass Tooltip */
+.map-floating-tooltip {
+  position: fixed;
+  background: rgba(42, 37, 33, 0.88);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  pointer-events: none;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  transform: translate(-50%, -125%);
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.map-floating-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0;
+  border-style: solid;
+  border-color: rgba(42, 37, 33, 0.88) transparent transparent;
+}
+
+/* Pulsing dot indicator for maps */
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(197, 155, 39, 0.7);
+  animation: livePulse 1.6s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes livePulse {
+  to {
+    box-shadow: 0 0 0 8px rgba(197, 155, 39, 0);
+  }
+}
+
+/* Floor Plan Detail Drawer Overlay Card */
+.map-detail-overlay {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: slideUpIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes slideUpIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-detail-overlay {
+    bottom: auto !important;
+    right: auto !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 460px !important;
+    max-height: 82vh !important;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-lg) !important;
+    padding: var(--space-6) !important;
+    overflow-y: auto !important;
+    animation: popMobile 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  }
+
+  @keyframes popMobile {
+    from {
+      transform: translate(-50%, -50%) scale(0.94);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, -50%) scale(1.0);
+      opacity: 1;
+    }
+  }
+}
+
+/* ==========================================================================
+   Responsive Mobile Navigation Hamburger Menu Styles
+   ========================================================================== */
+
+/* Hamburger Button Container */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2100;
+  padding: 0;
+}
+
+.nav-hamburger span {
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center;
+}
+
+/* Transform Hamburger bars to 'X' close indicator on active states */
+.nav-hamburger.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Slide-out Mobile Navigation Drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: rgba(250, 249, 246, 0.96);
+  backdrop-filter: blur(15px);
+  border-left: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  padding: 120px var(--space-8) var(--space-8) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  z-index: 2050;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mobile-nav-drawer.active {
+  transform: translateX(0);
+}
+
+/* Dark transparent backdrop overlay for mobile nav */
+.mobile-nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(26, 23, 20, 0.35);
+  backdrop-filter: blur(3px);
+  z-index: 2040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.mobile-nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Vertical menu lists in mobile drawer */
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.mobile-nav-links a {
+  font-size: var(--fs-base);
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.mobile-nav-links a.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-border);
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-links {
+    display: none; /* Hide standard desktop menu bar on mobile screens */
+  }
+}
+
+/* Custom Dropdown animation */
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+

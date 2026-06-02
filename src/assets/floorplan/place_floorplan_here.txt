@@ -1,0 +1,2 @@
+Place your floor plan image here (e.g. name it 'floorplan.png' or 'floorplan.jpg').
+This is located inside src/assets/floorplan/.
