@@ -75,7 +75,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         userSelect: 'none'
       }}
     >
-      {/* CSS Animation Keyframes for Lightbox */}
+      {/* CSS Animation Keyframes and Responsive Overrides for Lightbox */}
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
@@ -84,6 +84,21 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         @keyframes scaleIn {
           from { transform: scale(0.96); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+          .lightbox-arrow {
+            display: none !important;
+          }
+          .lightbox-container {
+            padding: 0 var(--space-2) !important;
+          }
+          .lightbox-card {
+            max-width: 95% !important;
+            max-height: 70vh !important;
+          }
+          .lightbox-img {
+            max-height: 70vh !important;
+          }
         }
       `}</style>
 
@@ -126,6 +141,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
 
       {/* Center Image Carousel Container */}
       <div 
+        className="lightbox-container"
         style={{ 
           position: 'relative', 
           flex: '1', 
@@ -139,6 +155,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         {/* Previous Button */}
         <button
           onClick={handlePrev}
+          className="lightbox-arrow"
           style={{
             position: 'absolute',
             left: 'var(--space-8)',
@@ -170,6 +187,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
 
         {/* Display Image Card */}
         <div 
+          className="lightbox-card"
           style={{ 
             maxWidth: '80%', 
             maxHeight: '65vh', 
@@ -189,6 +207,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
             src={images[activeIndex].url} 
             alt={`Photo ${activeIndex + 1}`}
             loading="lazy"
+            className="lightbox-img"
             style={{ 
               maxWidth: '100%', 
               maxHeight: '65vh',
@@ -201,6 +220,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         {/* Next Button */}
         <button
           onClick={handleNext}
+          className="lightbox-arrow"
           style={{
             position: 'absolute',
             right: 'var(--space-8)',
