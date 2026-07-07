@@ -187,27 +187,15 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         >
           <img 
             src={images[activeIndex].url} 
-            alt={`${roomTitle} Slide`}
+            alt={`Photo ${activeIndex + 1}`}
             loading="lazy"
             style={{ 
               maxWidth: '100%', 
-              maxHeight: '60vh',
+              maxHeight: '65vh',
               objectFit: 'contain',
               display: 'block',
             }}
           />
-          <div 
-            style={{ 
-              padding: '12px 20px', 
-              backgroundColor: 'rgba(26, 32, 40, 0.9)', 
-              color: '#FFF', 
-              fontSize: '11px',
-              textAlign: 'center',
-              borderTop: '1px solid rgba(255,255,255,0.05)'
-            }}
-          >
-            {images[activeIndex].caption}
-          </div>
         </div>
 
         {/* Next Button */}
@@ -243,48 +231,78 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
         </button>
       </div>
 
-      {/* Bottom Thumbnail Strip Navigator */}
-      <div 
-        style={{ 
-          padding: '0 var(--space-8)',
-          textAlign: 'center',
-          maxWidth: '800px',
-          margin: '0 auto'
-        }}
-      >
-        <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '8px' }}>
-          Image {activeIndex + 1} of {images.length}
-        </span>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', overflowX: 'auto', paddingBottom: '8px' }}>
-          {images.map((img, idx) => {
-            const isActive = idx === activeIndex;
-            return (
-              <div 
+      {/* Bottom: counter pill + dot indicators + thumbnails */}
+      <div style={{ padding: '0 var(--space-8) var(--space-2)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+
+        {/* Counter pill */}
+        <div style={{
+          backgroundColor: 'rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          borderRadius: '20px',
+          padding: '4px 14px',
+          fontSize: '10px',
+          fontWeight: '600',
+          color: 'rgba(255,255,255,0.6)',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase'
+        }}>
+          {activeIndex + 1} / {images.length}
+        </div>
+
+        {/* Dot indicators — show max 12 dots, rest hidden */}
+        {images.length <= 20 && (
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+            {images.map((_, idx) => (
+              <div
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
                 style={{
-                  width: '70px',
-                  height: '45px',
-                  borderRadius: '2px',
-                  overflow: 'hidden',
+                  width: idx === activeIndex ? '22px' : '6px',
+                  height: '6px',
+                  borderRadius: '3px',
+                  backgroundColor: idx === activeIndex ? 'var(--accent-color)' : 'rgba(255,255,255,0.25)',
                   cursor: 'pointer',
-                  border: isActive ? '2.5px solid var(--accent-color)' : '1.5px solid rgba(255, 255, 255, 0.2)',
-                  opacity: isActive ? 1.0 : 0.6,
-                  transform: isActive ? 'scale(1.05)' : 'scale(1.0)',
-                  transition: 'all 0.25s ease',
-                  backgroundColor: '#000'
+                  transition: 'all 0.3s cubic-bezier(0.25,1,0.5,1)'
                 }}
-              >
-                <img 
-                  src={img.url} 
-                  alt="Thumb" 
-                  loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                />
-              </div>
-            );
-          })}
-        </div>
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Thumbnail strip — only when > 1 image */}
+        {images.length > 1 && (
+          <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', maxWidth: '100%', paddingBottom: '4px' }}>
+            {images.map((img, idx) => {
+              const isActive = idx === activeIndex;
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  style={{
+                    flexShrink: 0,
+                    width: '56px',
+                    height: '38px',
+                    borderRadius: '3px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    border: isActive ? '2px solid var(--accent-color)' : '2px solid transparent',
+                    opacity: isActive ? 1 : 0.45,
+                    transition: 'all 0.2s ease',
+                    backgroundColor: '#000'
+                  }}
+                >
+                  <img
+                    src={img.url}
+                    alt=""
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
       </div>
     </div>
   );

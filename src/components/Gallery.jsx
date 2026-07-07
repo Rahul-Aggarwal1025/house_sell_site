@@ -303,21 +303,8 @@ export default function Gallery() {
                 >
                   {item.category}
                 </div>
-              </div>
-
-              {/* Text Info */}
-              <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '6px', flexGrow: 1 }}>
-                <h3 style={{ fontSize: 'var(--fs-sm)', fontWeight: '600', color: 'var(--text-primary)', margin: 0, fontFamily: 'var(--font-serif)' }}>
-                  {item.title}
-                </h3>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '8px' }}>
-                  <span style={{ fontSize: '9px', color: 'var(--text-muted)' }}>
-                    {item.url ? (item.type === 'pdf' ? 'Open Document' : 'View Image') : 'Placeholder'}
-                  </span>
-                  <span style={{ fontSize: '12px', color: 'var(--accent-color)' }}>&rarr;</span>
-                </div>
-              </div>
             </div>
+          </div>
           ))}
         </div>
       </div>
