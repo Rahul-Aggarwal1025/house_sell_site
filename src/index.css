@@ -1,5 +1,5 @@
 /* Premium Warm Cream & Minimalist White Design System - High Readability Version */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap');
 
 :root {
   /* Ultra-Premium Cool Slate & Crisp Pearl Design System - Maximum Contrast Readability */
@@ -46,8 +46,10 @@
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
+  --space-20: 5rem;
   --space-24: 6rem;
   
   /* Borders */

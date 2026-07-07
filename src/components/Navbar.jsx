@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import logoIcon from '../assets/logo_icon.png';
 
-export default function Navbar({ currentPage, setCurrentPage }) {
+export default function Navbar({ currentPage, setCurrentPage, prefetch }) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -73,6 +73,7 @@ export default function Navbar({ currentPage, setCurrentPage }) {
                   <a 
                     href={`#${item.id}`} 
                     className={currentPage === item.id ? 'active' : ''}
+                    onMouseEnter={() => prefetch?.(item.id)}
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavClick(item.id);
@@ -112,6 +113,7 @@ export default function Navbar({ currentPage, setCurrentPage }) {
               <a 
                 href={`#${item.id}`} 
                 className={currentPage === item.id ? 'active' : ''}
+                onMouseEnter={() => prefetch?.(item.id)}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick(item.id);

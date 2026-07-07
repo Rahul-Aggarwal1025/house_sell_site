@@ -1,11 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Specifications from './components/Specifications';
-import InteractiveMap from './components/InteractiveMap';
-import Gallery from './components/Gallery';
-import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+
+// Lazy-load heavy pages — their JS only downloads when the user navigates there
+const Specifications = lazy(() => import('./components/Specifications'));
+const InteractiveMap = lazy(() => import('./components/InteractiveMap'));
+const Gallery       = lazy(() => import('./components/Gallery'));
+const ContactForm   = lazy(() => import('./components/ContactForm'));
+
+// Minimal inline fallback — no flash, matches bg color
+const PageFallback = () => (
+  <div style={{ minHeight: '80vh', backgroundColor: 'var(--bg-primary)' }} />
+);
 
 export default function App() {
   
@@ -39,43 +46,59 @@ export default function App() {
     }
   }, [currentPage]);
 
+  // Prefetch adjacent pages on hover so navigation feels instant
+  const prefetch = (page) => {
+    if (page === 'gallery')        import('./components/Gallery');
+    if (page === 'floor-plan')     import('./components/InteractiveMap');
+    if (page === 'specifications') import('./components/Specifications');
+    if (page === 'contact')        import('./components/ContactForm');
+  };
+
   // Helper function to render the active view/page
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Hero setCurrentPage={setCurrentPage} />;
+        return <Hero setCurrentPage={setCurrentPage} prefetch={prefetch} />;
       case 'floor-plan':
         return (
           <div style={{ paddingTop: '100px' }}>
-            <InteractiveMap />
+            <Suspense fallback={<PageFallback />}>
+              <InteractiveMap />
+            </Suspense>
           </div>
         );
       case 'specifications':
         return (
           <div style={{ paddingTop: '100px' }}>
-            <Specifications />
+            <Suspense fallback={<PageFallback />}>
+              <Specifications />
+            </Suspense>
           </div>
         );
       case 'gallery':
         return (
           <div style={{ paddingTop: '100px' }}>
-            <Gallery />
+            <Suspense fallback={<PageFallback />}>
+              <Gallery />
+            </Suspense>
           </div>
         );
       case 'contact':
         return (
           <div style={{ paddingTop: '100px' }}>
-            <ContactForm />
+            <Suspense fallback={<PageFallback />}>
+              <ContactForm />
+            </Suspense>
           </div>
         );
       default:
-        return <Hero setCurrentPage={setCurrentPage} />;
+        return <Hero setCurrentPage={setCurrentPage} prefetch={prefetch} />;
     }
   };
 
   return (
     <>
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} prefetch={prefetch} />
       
       <main style={{ minHeight: '80vh' }}>
         {renderPage()}
