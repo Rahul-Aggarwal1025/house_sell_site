@@ -16,7 +16,7 @@ export default function ContactForm() {
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: 'var(--space-12)' }}>
           <span className="section-subtitle">Request Information</span>
-          <h2>Inquire About Plot 769</h2>
+          <h2>Inquire About House 769</h2>
           <p>
             Site visits arranged daily in Sector 123, Mohali. Connect with us directly via phone, WhatsApp, or email.
           </p>
@@ -138,7 +138,7 @@ export default function ContactForm() {
             </div>
 
             <p style={{ margin: 0, fontSize: 'var(--fs-sm)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-              Plot No. 769 is situated within Sector 123, Mohali — offering swift connectivity to Chandigarh and major transit highways.
+              House No. 769 is situated within Sector 123, Mohali — offering swift connectivity to Chandigarh and major transit highways.
             </p>
 
             {/* Google Map */}

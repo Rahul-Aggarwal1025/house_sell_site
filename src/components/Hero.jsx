@@ -26,13 +26,13 @@ export default function Hero({ setCurrentPage }) {
     },
     {
       id: 'specifications',
-      title: 'Land Records & Specs',
+      title: 'Property Registry & Specs',
       icon: '📜',
       badge: 'NOC & Registry',
       bullets: [
         'Punjab Government NOC',
-        'Certified Plot Size (200 Gaz)',
-        'SAS Nagar Land Records',
+        'Certified House Size (200 Gaz)',
+        'SAS Nagar Registry Records',
         'Regularization Receipt Paid'
       ]
     },
@@ -42,7 +42,7 @@ export default function Hero({ setCurrentPage }) {
       icon: '🖼️',
       badge: 'Media Log',
       bullets: [
-        'Plot Front Boundary View',
+        'Property Front View',
         'Sector 123 Approach Road',
         'High-Res Room Photos',
         'Interactive Lightbox Set'
@@ -87,10 +87,10 @@ export default function Hero({ setCurrentPage }) {
           <div style={{ flex: '1 1 500px', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             <div>
               <span className="section-subtitle" style={{ letterSpacing: '0.25em', display: 'inline-block', marginBottom: '8px' }}>
-                Exclusive Plotted Property
+                Exclusive Luxury Residence
               </span>
               <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: '500', fontFamily: 'var(--font-serif)', lineHeight: '1.1', color: 'var(--text-primary)', marginBottom: '12px' }}>
-                Plot No. 769,<br />Amazon City
+                House No. 769,<br />Amazon City
               </h1>
               <div 
                 style={{ 
@@ -113,7 +113,7 @@ export default function Hero({ setCurrentPage }) {
             </div>
 
             <p style={{ fontSize: 'var(--fs-md)', color: 'var(--text-secondary)', lineHeight: '1.7', margin: '0' }}>
-              A prime residential plotted property with a final regularization certificate issued by the Punjab Local Government Kharar authority. Perfectly flat, north-facing, and ready for immediate bespoke luxury construction.
+              A prime newly constructed luxury independent residence with a final regularization certificate issued by the Punjab Local Government Kharar authority. Newly built, premium finished, and ready for immediate move-in.
             </p>
 
             {/* Premium Button Action Group */}
@@ -130,7 +130,7 @@ export default function Hero({ setCurrentPage }) {
                 className="btn btn-outline"
                 style={{ padding: '12px 28px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
               >
-                📄 View Land Records
+                📄 View Property Records
               </button>
             </div>
           </div>
@@ -211,7 +211,7 @@ export default function Hero({ setCurrentPage }) {
             <strong style={{ fontSize: 'var(--fs-sm)', color: 'var(--text-primary)', fontWeight: '600', display: 'block', marginTop: '2px' }}>Shalini Aggarwal</strong>
           </div>
           <div style={{ flex: '1 1 180px', borderLeft: '2px solid var(--accent-color)', paddingLeft: '16px' }}>
-            <span style={{ display: 'block', fontSize: '9px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600' }}>Plot Size Metric</span>
+            <span style={{ display: 'block', fontSize: '9px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600' }}>House Area Metric</span>
             <strong style={{ fontSize: 'var(--fs-sm)', color: 'var(--accent-color)', fontWeight: '600', display: 'block', marginTop: '2px' }}>167.22 m² (~200 Gaz)</strong>
           </div>
           <div style={{ flex: '1 1 180px', borderLeft: '2px solid var(--accent-color)', paddingLeft: '16px' }}>

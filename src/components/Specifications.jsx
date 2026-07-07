@@ -12,12 +12,12 @@ export default function Specifications() {
   }, []);
 
   const quickSpecs = [
-    { label: 'Plot Number', value: 'Plot No. 769', icon: '📍' },
+    { label: 'House Number', value: 'House No. 769', icon: '📍' },
     { label: 'Project Name', value: 'Amazon City', icon: '🏗️' },
     { label: 'Sector Location', value: 'Sector 123 (Mohali)', icon: '🗺️' },
     { label: 'Registered Owner', value: 'Shalini Aggarwal', icon: '👤' },
     { label: 'Nominee / Co-Owner', value: 'Munish Aggarwal', icon: '👥' },
-    { label: 'Plot Size', value: '167.22 sqm (~200 Gaz)', icon: '📐' },
+    { label: 'House Area', value: '167.22 sqm (~200 Gaz)', icon: '📐' },
     { label: 'Vasika Reg. No.', value: '749', icon: '📝' },
     { label: 'Clearance Status', value: 'Paid & Regularized', icon: '✅' }
   ];
@@ -29,9 +29,9 @@ export default function Specifications() {
         {/* Header */}
         <div className="section-header" style={{ marginBottom: 'var(--space-12)' }}>
           <span className="section-subtitle">Sunrise Estate Mapping</span>
-          <h2>Official Sanctioned Map & Specs</h2>
+          <h2>Official Sanctioned Map &amp; Specs</h2>
           <p>
-            Review the high-resolution sanctioned layout map and certified legal clearances for Plot No. 769.
+            Review the high-resolution sanctioned layout map and certified legal clearances for House No. 769.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function Specifications() {
                   paddingBottom: '14px' 
                 }}
               >
-                Certified Plot Parameters
+                Certified House Parameters
               </h3>
               
               {/* Premium Luxury Checklist / Parameters */}
@@ -99,7 +99,7 @@ export default function Specifications() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '32px' }}>
               <a 
                 href={impMapPdf} 
-                download="Plot_769_Sanctioned_Map.pdf"
+                download="House_769_Sanctioned_Map.pdf"
                 className="btn"
                 style={{ 
                   backgroundColor: 'var(--accent-color)', 
@@ -183,7 +183,7 @@ export default function Specifications() {
                 <span className="live-pulse-dot" style={{ backgroundColor: 'var(--accent-color)' }} />
                 <span>Sanctioned Layout Blueprint (Imp_map.pdf)</span>
               </div>
-              <span style={{ color: 'var(--accent-color)', fontSize: '10px' }}>PLOT NO. 769</span>
+              <span style={{ color: 'var(--accent-color)', fontSize: '10px' }}>HOUSE NO. 769</span>
             </div>
 
             {/* PDF Embedded Viewport / Mobile Blueprint Dashboard */}
@@ -220,7 +220,7 @@ export default function Specifications() {
                 <div style={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '280px', gap: '10px', marginTop: 'var(--space-2)' }}>
                   <a 
                     href={impMapPdf} 
-                    download="Plot_769_Sanctioned_Map.pdf"
+                    download="House_769_Sanctioned_Map.pdf"
                     className="btn btn-primary"
                     style={{ 
                       textAlign: 'center', 

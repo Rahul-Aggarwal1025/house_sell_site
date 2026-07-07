@@ -63,7 +63,7 @@ export default function Gallery() {
   const impMapEntry = {
     id: 'legal-imp-map',
     url: impMapPdf,
-    title: 'Municipal Sanctioned Layout Map — Plot 769',
+    title: 'Municipal Sanctioned Layout Map — House 769',
     category: 'Legal NOC Documents',
     type: 'pdf',
     path: '/src/assets/Imp_map.pdf',
@@ -74,7 +74,7 @@ export default function Gallery() {
     // Site Photos (fall back to hero if none uploaded)
     ...(siteImages.length > 0
       ? siteImages
-      : [{ id: 'site-fallback-1', url: heroMansion, title: 'Plot 769 View', category: 'Site Photos', type: 'image' }]),
+      : [{ id: 'site-fallback-1', url: heroMansion, title: 'House 769 View', category: 'Site Photos', type: 'image' }]),
 
     // Layout Plans (show nothing if no files)
     ...floorplanImages,
@@ -116,7 +116,7 @@ export default function Gallery() {
           <h2>Media &amp; Layout Registry</h2>
           <p>
             An interactive media display showcasing actual site photos, official sector layouts,
-            and verified Punjab government regularized certificate credentials for Plot No. 769.
+            and verified Punjab government regularized certificate credentials for House No. 769.
           </p>
         </div>
 
