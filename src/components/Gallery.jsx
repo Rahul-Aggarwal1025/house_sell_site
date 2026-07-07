@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import RoomLightbox from './RoomLightbox';
 import heroMansion from '../assets/hero_mansion.png';
+import impMapPdf from '../assets/Imp_map.pdf';
 
 const CATEGORIES = ['All', 'Site Photos', 'Layout Plans', 'Legal NOC Documents'];
 
@@ -13,7 +14,7 @@ const docImagesGlob = import.meta.glob('/src/assets/docs/**/*.{png,jpg,jpeg,webp
 
 const formatGlob = (globObj, category, defaultTitlePrefix) => {
   return Object.keys(globObj)
-    .filter(path => !path.toLowerCase().endsWith('.txt')) // ignore placeholder text files
+    .filter(path => !path.toLowerCase().endsWith('.txt') && !path.toLowerCase().endsWith('.md')) // ignore placeholder files
     .map((path, idx) => {
       const module = globObj[path];
       const url = module ? (module.default || module) : '';
@@ -99,22 +100,24 @@ export default function Gallery() {
 
   if (floorplanImages.length > 0) {
     plotMedia = [...plotMedia, ...floorplanImages];
-  } else {
-    plotMedia = [
-      ...plotMedia,
-      { id: 'floor-fallback-1', url: '', title: 'Official Ground Layout Plan', category: 'Layout Plans', type: 'image' },
-      { id: 'floor-fallback-2', url: '', title: 'Revenue Estate Jandpur cadastral map segment', category: 'Layout Plans', type: 'image' }
-    ];
   }
+  // No fallback — empty Layout Plans section shows nothing
+
+  // Always include the sanctioned Imp_map.pdf as a real Legal NOC entry
+  const impMapEntry = {
+    id: 'legal-imp-map',
+    url: impMapPdf,
+    title: 'Municipal Sanctioned Layout Map — Plot 769',
+    category: 'Legal NOC Documents',
+    type: 'pdf',
+    path: '/src/assets/Imp_map.pdf'
+  };
 
   if (docImages.length > 0) {
-    plotMedia = [...plotMedia, ...docImages];
+    plotMedia = [...plotMedia, impMapEntry, ...docImages];
   } else {
-    plotMedia = [
-      ...plotMedia,
-      { id: 'doc-fallback-1', url: '', title: 'Punjab Govt Regularization Approval', category: 'Legal NOC Documents', type: 'image' },
-      { id: 'doc-fallback-2', url: '', title: 'Final regularized certificate registry copy', category: 'Legal NOC Documents', type: 'image' }
-    ];
+    // Only show the real sanctioned map — no fake placeholders
+    plotMedia = [...plotMedia, impMapEntry];
   }
 
   // Filter visible items
@@ -253,9 +256,16 @@ export default function Gallery() {
               >
                 {item.url ? (
                   item.type === 'pdf' ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '3rem' }}>📄</span>
-                      <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)' }}>PDF Document</span>
+                    <div style={{
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      gap: '12px', width: '100%', height: '100%',
+                      background: 'linear-gradient(135deg, #1a1d22 0%, #2a2e36 100%)'
+                    }}>
+                      <span style={{ fontSize: '2.8rem', lineHeight: 1 }}>📄</span>
+                      <div style={{ textAlign: 'center' }}>
+                        <span style={{ fontSize: '9px', display: 'block', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-color)' }}>PDF Document</span>
+                        <span style={{ fontSize: '8px', color: 'rgba(255,255,255,0.35)', marginTop: '4px', display: 'block', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Tap to open</span>
+                      </div>
                     </div>
                   ) : (
                     <img 
@@ -272,16 +282,7 @@ export default function Gallery() {
                       onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.0)'}
                     />
                   )
-                ) : (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '20px', textAlign: 'center' }}>
-                    <span style={{ fontSize: '2.5rem', color: 'var(--text-muted)' }}>
-                      {item.category === 'Layout Plans' ? '📐' : '📜'}
-                    </span>
-                    <span style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-color)', fontWeight: '600' }}>
-                      Add file to see preview
-                    </span>
-                  </div>
-                )}
+                ) : null}
                 
                 {/* Category Pill */}
                 <div 
