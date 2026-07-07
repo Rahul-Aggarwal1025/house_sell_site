@@ -85,9 +85,37 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
           from { transform: scale(0.96); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
         }
+        .mobile-lightbox-arrow {
+          display: none !important;
+        }
         @media (max-width: 768px) {
           .lightbox-arrow {
             display: none !important;
+          }
+          .mobile-lightbox-arrow {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(166, 125, 30, 0.35) !important;
+            color: #FFF !important;
+            border-radius: 50% !important;
+            width: 44px !important;
+            height: 44px !important;
+            font-size: 24px !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(166, 125, 30, 0.1) !important;
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            user-select: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            padding-bottom: 3px !important; /* aligns the chevron vertically */
+          }
+          .mobile-lightbox-arrow:active {
+            transform: scale(0.88) !important;
+            background: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 15px rgba(166, 125, 30, 0.4) !important;
           }
           .lightbox-container {
             padding: 0 var(--space-2) !important;
@@ -100,7 +128,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
             max-height: 70vh !important;
           }
         }
-      `}</style>
+      `}</style>,StartLine:88,TargetContent:,StartLine:88,TargetContent:
 
       {/* Top bar */}
       <div 
@@ -254,19 +282,40 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
       {/* Bottom: counter pill + dot indicators + thumbnails */}
       <div style={{ padding: '0 var(--space-8) var(--space-2)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
 
-        {/* Counter pill */}
-        <div style={{
-          backgroundColor: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.12)',
-          borderRadius: '20px',
-          padding: '4px 14px',
-          fontSize: '10px',
-          fontWeight: '600',
-          color: 'rgba(255,255,255,0.6)',
-          letterSpacing: '0.08em',
-          textTransform: 'uppercase'
-        }}>
-          {activeIndex + 1} / {images.length}
+        {/* Navigation Row on Mobile */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          {/* Mobile Prev Arrow */}
+          <button
+            onClick={handlePrev}
+            className="mobile-lightbox-arrow"
+            style={{ outline: 'none', border: 'none', fontWeight: 'bold' }}
+          >
+            &#8249;
+          </button>
+
+          {/* Counter pill */}
+          <div style={{
+            backgroundColor: 'rgba(255,255,255,0.08)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderRadius: '20px',
+            padding: '4px 14px',
+            fontSize: '10px',
+            fontWeight: '600',
+            color: 'rgba(255,255,255,0.6)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase'
+          }}>
+            {activeIndex + 1} / {images.length}
+          </div>
+
+          {/* Mobile Next Arrow */}
+          <button
+            onClick={handleNext}
+            className="mobile-lightbox-arrow"
+            style={{ outline: 'none', border: 'none', fontWeight: 'bold' }}
+          >
+            &#8250;
+          </button>
         </div>
 
         {/* Dot indicators — show max 12 dots, rest hidden */}
