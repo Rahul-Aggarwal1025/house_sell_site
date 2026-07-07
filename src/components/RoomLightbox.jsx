@@ -1,6 +1,8 @@
-import { useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function RoomLightbox({ isOpen, onClose, images, activeIndex, setActiveIndex, roomTitle }) {
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
   
   const handlePrev = useCallback(() => {
     setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -9,6 +11,31 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length, setActiveIndex]);
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > 50;  // Swipe left -> Next image
+    const isRightSwipe = distance < -50; // Swipe right -> Previous image
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+    
+    // Reset
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -28,6 +55,9 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
 
   return (
     <div 
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       style={{
         position: 'fixed',
         top: 0,
@@ -158,6 +188,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
           <img 
             src={images[activeIndex].url} 
             alt={`${roomTitle} Slide`}
+            loading="lazy"
             style={{ 
               maxWidth: '100%', 
               maxHeight: '60vh',
@@ -247,6 +278,7 @@ export default function RoomLightbox({ isOpen, onClose, images, activeIndex, set
                 <img 
                   src={img.url} 
                   alt="Thumb" 
+                  loading="lazy"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                 />
               </div>

@@ -1,0 +1,4 @@
+Paste the main front view or headshot photos of the property in this folder.
+Supported formats: .png, .jpg, .jpeg, .webp
+
+The website will automatically pick the first image in this folder as the main property photo on the landing page, and list all of them in the Gallery under "Site Photos".

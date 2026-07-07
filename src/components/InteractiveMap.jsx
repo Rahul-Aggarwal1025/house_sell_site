@@ -553,6 +553,7 @@ export default function InteractiveMap() {
                       <img 
                         src={currentImages[activeImageIdx].url} 
                         alt={currentRoom.title}
+                        loading="lazy"
                         style={{
                           width: '100%',
                           height: 'auto',
@@ -624,6 +625,7 @@ export default function InteractiveMap() {
                   src={getFloorPlanImage()} 
                   alt={`${activeFloorConfig.title} Plan`}
                   onLoad={handleImageLoad}
+                  loading="lazy"
                   style={{ 
                     maxWidth: '100%', 
                     height: 'auto', 
@@ -722,6 +724,7 @@ export default function InteractiveMap() {
                   src={getFloorPlanImage()} 
                   alt={`${activeFloorConfig.title} Plan`}
                   onLoad={handleImageLoad}
+                  loading="lazy"
                   style={{ 
                     maxWidth: '100%', 
                     height: 'auto', 
@@ -871,6 +874,7 @@ export default function InteractiveMap() {
                       <img 
                         src={currentImages[activeImageIdx].url} 
                         alt={currentRoom.title}
+                        loading="lazy"
                         style={{
                           width: '100%',
                           height: 'auto',

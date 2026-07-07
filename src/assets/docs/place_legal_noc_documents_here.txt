@@ -1,0 +1,4 @@
+Paste legal documents, NOC approvals, registry copies, or cadastral map segment images/PDFs in this folder.
+Supported formats: .png, .jpg, .jpeg, .webp
+
+The website will automatically list these files under the "Legal NOC Documents" tab in the Gallery.

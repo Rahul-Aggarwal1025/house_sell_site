@@ -1,0 +1,4 @@
+Paste outdoor, garden, boundary, neighborhood, or other random photos of the property here.
+Supported formats: .png, .jpg, .jpeg, .webp
+
+These files will automatically be loaded under "Site Photos" in the gallery tab.

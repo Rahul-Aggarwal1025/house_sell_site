@@ -1,5 +1,15 @@
 import heroMansion from '../assets/hero_mansion.png';
 
+// Dynamically fetch user-pasted main property photos
+const mainImagesGlob = import.meta.glob('/src/assets/property_main/**/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
+
+const mainImages = Object.keys(mainImagesGlob).map(path => {
+  const module = mainImagesGlob[path];
+  return module ? (module.default || module) : '';
+}).filter(Boolean);
+
+const heroMansionImage = mainImages.length > 0 ? mainImages[0] : heroMansion;
+
 export default function Hero({ setCurrentPage }) {
   const navItems = [
     {
@@ -140,8 +150,9 @@ export default function Hero({ setCurrentPage }) {
           >
             <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius-sm)' }}>
               <img 
-                src={heroMansion} 
+                src={heroMansionImage} 
                 alt="Luxury Mansion Architectural Blueprint Visual" 
+                fetchpriority="high"
                 style={{ 
                   width: '100%', 
                   height: 'auto', 
