@@ -132,6 +132,20 @@ export default function Hero({ setCurrentPage }) {
               >
                 📄 View Property Records
               </button>
+              <button 
+                onClick={() => handleCardClick('gallery')}
+                className="btn btn-outline"
+                style={{ 
+                  padding: '12px 24px', 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '8px',
+                  borderColor: 'var(--accent-color)', 
+                  color: 'var(--accent-color)'
+                }}
+              >
+                🖼️ View Gallery
+              </button>
             </div>
           </div>
 
@@ -224,6 +238,77 @@ export default function Hero({ setCurrentPage }) {
           </div>
         </div>
 
+        {/* CSS Overrides for Portal Stack Section */}
+        <style>{`
+          .portal-card {
+            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-6) var(--space-8);
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            gap: var(--space-6);
+          }
+          .portal-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-md);
+          }
+          .portal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 0 0 auto;
+            background-color: var(--accent-color);
+            color: #FFF;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--accent-color);
+            transition: all 0.25s ease;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            box-shadow: 0 4px 12px rgba(166, 125, 30, 0.15);
+            user-select: none;
+          }
+          .portal-card:hover .portal-btn {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            box-shadow: 0 6px 16px rgba(166, 125, 30, 0.3);
+          }
+          .portal-info {
+            flex: 1 1 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          @media (max-width: 768px) {
+            .portal-card {
+              padding: var(--space-6) var(--space-4) !important;
+              flex-direction: column !important;
+              align-items: stretch !important;
+              text-align: left !important;
+            }
+            .portal-btn {
+              width: 100% !important;
+              padding: 14px 20px !important;
+              margin-top: 10px !important;
+              font-size: 14px !important;
+            }
+            .portal-info {
+              flex: none !important;
+            }
+          }
+        `}</style>
+
         {/* ==========================================================================
             REDESIGNED PORTAL: Clean Asymmetric Horizontal Showcases (No dark grid boxes)
             ========================================================================== */}
@@ -255,31 +340,7 @@ export default function Hero({ setCurrentPage }) {
                 <div
                   key={item.id}
                   onClick={() => handleCardClick(item.id)}
-                  style={{
-                    cursor: 'pointer',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: 'var(--space-6) var(--space-8)',
-                    backgroundColor: 'var(--bg-tertiary)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: 'var(--radius-sm)',
-                    boxShadow: 'var(--shadow-sm)',
-                    transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
-                    position: 'relative',
-                    gap: 'var(--space-6)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-3px)';
-                    e.currentTarget.style.borderColor = 'var(--accent-color)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = 'var(--border-color)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-                  }}
+                  className="portal-card"
                 >
                   {/* Part 1: Index Number and Emblem Icon */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', flex: '0 0 auto' }}>
@@ -303,7 +364,7 @@ export default function Hero({ setCurrentPage }) {
                   </div>
 
                   {/* Part 2: Department Title & Parameters tag pills */}
-                  <div style={{ flex: '1 1 350px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div className="portal-info">
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
                       <h3 style={{ fontSize: 'var(--fs-base)', fontWeight: '600', fontFamily: 'var(--font-serif)', color: 'var(--text-primary)', margin: '0' }}>
                         {item.title}
@@ -350,26 +411,9 @@ export default function Hero({ setCurrentPage }) {
                   </div>
 
                   {/* Part 3: Interactive CTA Action Link */}
-                  <div 
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '8px', 
-                      flex: '0 0 auto',
-                      backgroundColor: 'rgba(166, 125, 30, 0.05)',
-                      padding: '8px 16px',
-                      borderRadius: 'var(--radius-sm)',
-                      border: '1px solid rgba(166, 125, 30, 0.1)',
-                      transition: 'all 0.2s ease',
-                      fontSize: '10px', 
-                      fontWeight: '700', 
-                      textTransform: 'uppercase', 
-                      letterSpacing: '0.08em', 
-                      color: 'var(--accent-color)'
-                    }}
-                  >
-                    <span>Enter Department</span>
-                    <span style={{ fontSize: '12px' }}>&rarr;</span>
+                  <div className="portal-btn">
+                    <span>Click Here</span>
+                    <span style={{ fontSize: '13px', fontWeight: 'bold' }}>&rarr;</span>
                   </div>
 
                 </div>
